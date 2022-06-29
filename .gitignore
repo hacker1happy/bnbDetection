@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/.ipynb_checkpoints
+best_weights.hdf5
 # testing
 /coverage
 
