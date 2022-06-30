@@ -44,6 +44,7 @@ export default function Header() {
 		})
 	}
 
+
 	function refreshPage() {
 		window.location.reload(false);
 	}
