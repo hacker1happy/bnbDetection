@@ -1,5 +1,4 @@
 import os
-from unittest import result
 from flask import Flask, request, session
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
@@ -42,6 +41,13 @@ def fileUpload():
     target = UPLOAD_FOLDER
     if not os.path.isdir(target):
         os.mkdir(target)
+    else:
+        for filename in os.listdir(target):
+            file_path = os.path.join(target, filename)
+            try:
+                os.unlink(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
 
     file = request.files['file'] 
     filename = secure_filename(file.filename)
@@ -54,7 +60,7 @@ def fileUpload():
         "result" : result,
         "path" : destination
     }
-
+    print(output)
     return output
 
 

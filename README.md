@@ -7,3 +7,4 @@ Approach :
 * perform predict function
 * return the result from flask to react along with the image 
 
+https://www.geeksforgeeks.org/how-to-connect-reactjs-with-flask-api/
