@@ -1,7 +1,6 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-// import Header from './Components/Header';
-import Main from './Components/Main';
+import Header from './Components/Header';
 import WasteDetail from './Components/WasteDetail';
 import WasteQuote from './Components/WasteQuote';
 
@@ -9,8 +8,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/* <Header /> */}
-      <Main />
+      <Header />
       <WasteDetail />
       <WasteQuote />
     </div>
@@ -18,6 +16,3 @@ function App() {
 }
 
 export default App;
-
-
-

@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, request, session
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
@@ -8,12 +9,11 @@ from keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'src/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+CORS(app)
 
 # Define a route to fetch the avaialable articles
 
@@ -36,6 +36,7 @@ def predictResult(filepath):
 
 
 @app.route('/upload', methods=['POST'])
+
 def fileUpload():
 
     target = UPLOAD_FOLDER
@@ -57,15 +58,13 @@ def fileUpload():
     result = predictResult(destination)
     
     output = {
-        "result" : result,
-        "path" : destination
+        "result": result,
+        "fileName": destination
     }
-    print(output)
+    # print(output)
+
     return output
 
 
 if __name__ == "__main__":
-    app.secret_key = os.urandom(24)
     app.run(debug=True)
-
-CORS(app, expose_headers='Authorization')
